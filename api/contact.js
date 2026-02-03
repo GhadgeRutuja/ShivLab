@@ -17,7 +17,26 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, email, message } = req.body || {};
+    // Support both parsed `req.body` (frameworks) and raw request bodies
+    let body = req.body;
+    if (!body) {
+      try {
+        const raw = await new Promise((resolve, reject) => {
+          let data = '';
+          req.on('data', (chunk) => (data += chunk));
+          req.on('end', () => resolve(data));
+          req.on('error', reject);
+        });
+        body = raw ? JSON.parse(raw) : {};
+      } catch (e) {
+        body = {};
+      }
+    }
+
+    const { name, email, message } = body || {};
+
+    // Helpful debug log for unexpected 400s (appears in Vercel function logs)
+    console.log('Contact API received body:', { name, email: email ? String(email).slice(0, 64) : email, message: message ? String(message).slice(0, 128) : message });
 
     // Basic validation
     if (!name || typeof name !== 'string' || name.trim().length < 2) {
