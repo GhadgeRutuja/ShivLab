@@ -25,14 +25,12 @@ const Navbar = () => {
         <>
             <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
                 <div className="container nav-content">
-                    <div className="logo" onClick={() => scrollToSection('hero')}>
-                        <div className="icon-box">
-                            <Microscope size={24} color="white" />
-                        </div>
-                        <div className="logo-text-group">
-                            <span className="logo-text">Shiv(Ghadge)</span>
-                            <span className="logo-subtext">Diagnosis Lab</span>
-                        </div>
+                    <div className="logo" onClick={() => scrollToSection('hero')}> 
+                        <img src="/logo.png" alt="ShivGhadge Lab logo" style={{ width: 56, height: 56, objectFit: 'contain', background: 'transparent' }} />
+                      <div className="logo-text-group">
+                        <span className="logo-text">Shiv(Ghadge)</span>
+                        <span className="logo-subtext">Diagnosis Lab</span>
+                      </div>
                     </div>
 
                     <div className="desktop-links">
@@ -53,13 +51,11 @@ const Navbar = () => {
             <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
                 <div className="menu-header">
                     <div className="logo">
-                        <div className="icon-box">
-                            <Microscope size={20} color="white" />
-                        </div>
-                        <div className="logo-text-group">
-                            <span className="logo-text">Shiv(Ghadge)</span>
-                            <span className="logo-subtext">Diagnosis Lab</span>
-                        </div>
+                        <img src="/logo.png" alt="ShivGhadge Lab logo" style={{ width: 48, height: 48, objectFit: 'contain', background: 'transparent' }} />
+                      <div className="logo-text-group">
+                        <span className="logo-text">Shiv(Ghadge)</span>
+                        <span className="logo-subtext">Diagnosis Lab</span>
+                      </div>
                     </div>
                     <button onClick={() => setIsMobileMenuOpen(false)}>
                         <X size={24} />

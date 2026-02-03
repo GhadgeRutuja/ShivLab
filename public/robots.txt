@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Sitemap: https://shivghadge.in/sitemap.xml
+Host: shivghadge.in
+# Block sensitive folders if any (uncomment to use)
+# Disallow: /node_modules/
+# Disallow: /private/
