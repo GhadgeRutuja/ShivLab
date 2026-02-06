@@ -68,15 +68,15 @@ const Info = () => {
                             <div className="report-time mt-3">
                                 <Clock className="text-primary" size={20} />
                                 <div>
-                                    <strong>Next Day 12 PM</strong>
+                                    <strong>Upto 72 Hours</strong>
                                     <p className="text-sm text-light">For Culture & Sensitivity Tests</p>
                                 </div>
                             </div>
                         </div>
 
                         <div className="report-preview">
-                            {/* Dummy Blurred Report */}
-                            <div className="report-paper">
+                            {/* Patient Result Sheet PDF */}
+                            <a href="/Patient Result Sheet.pdf" target="_blank" rel="noopener noreferrer" className="report-paper report-link">
                                 <div className="report-header">
                                     <div className="logo-stub"></div>
                                     <div className="line-stub w-50"></div>
@@ -90,11 +90,12 @@ const Info = () => {
                                         </div>
                                     ))}
                                 </div>
-                                <div className="blur-overlay">
+                                <div className="pdf-overlay">
                                     <FileText size={48} className="text-primary" />
-                                    <span>Sample Report</span>
+                                    <span>Patient Result Sheet</span>
+                                    <p className="pdf-hint">Click to view PDF</p>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -243,22 +244,42 @@ const Info = () => {
             position: relative;
             border: 1px solid #e2e8f0;
         }
+        .report-link {
+            display: block;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .report-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
         .logo-stub { height: 20px; width: 40px; background: #cbd5e0; margin-bottom: 2rem; }
         .line-stub { height: 8px; background: #edf2f7; margin-bottom: 1rem; border-radius: 4px; }
         .line-row { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
-        .blur-overlay {
+        .pdf-overlay {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(255,255,255,0.6);
-            backdrop-filter: blur(3px);
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(2px);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 1rem;
+            gap: 0.75rem;
             color: var(--primary);
             font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        .report-link:hover .pdf-overlay {
+            background: rgba(255,255,255,0.95);
+        }
+        .pdf-hint {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--text-light);
+            margin-top: 0.5rem;
         }
 
         @media (min-width: 768px) {

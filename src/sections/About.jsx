@@ -9,11 +9,11 @@ const About = () => {
                     <div className="about-content">
                         <h2 className="section-title" style={{ textAlign: 'left' }}>About Shiv(Ghadge) Clinical Computerised Laboratory</h2>
                         <p className="lead-text">
-                            Serving Rahuri Factory, Ahilyanagar since 2001.
+                            Serving Rahuri Factory, Ahilyanagar since 1998.
                         </p>
                         <p className="main-text">
-                            Shiv(Ghadge) Clinical Computerised Laboratory has served the community for over 25 years with a focused
-                            scope: blood and urine diagnostics only. Established in 2001, we've built trust with 10,000+ patients
+                            Shiv(Ghadge) Clinical Computerised Laboratory has served the community for over 28+ years with a focused
+                            scope: blood and urine diagnostics only. Established in 1998, we've built trust with 10,000+ patients
                             through accurate reports, modern equipment, and a commitment to quality care.
                         </p>
 
@@ -21,7 +21,7 @@ const About = () => {
                             <div className="stat-item">
                                 <Activity className="stat-icon" size={32} />
                                 <div>
-                                    <strong>25+ Years</strong>
+                                    <strong>28+ Years</strong>
                                     <span>Experience</span>
                                 </div>
                             </div>
@@ -39,7 +39,7 @@ const About = () => {
                             <div className="divider-sm"></div>
                             <p className="experience">Head Technician</p>
                             <p className="tech-desc">
-                                With 25+ years of experience in clinical pathology, Mr. Ghadge ensures every sample is
+                                With 28+ years of experience in clinical pathology, Mr. Ghadge ensures every sample is
                                 handled with care and all reports are verified for accuracy.
                             </p>
                         </div>

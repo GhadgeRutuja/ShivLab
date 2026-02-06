@@ -1,159 +1,250 @@
 import React, { useEffect } from 'react';
-import { X, CheckCircle2 } from 'lucide-react';
+import { X } from 'lucide-react';
 
 const Modal = ({ test, onClose }) => {
-    if (!test) return null;
+  if (!test) return null;
 
-    useEffect(() => {
-        document.body.style.overflow = 'hidden';
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
-    }, []);
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
 
-    return (
-        <div className="modal-backdrop" onClick={onClose}>
-            <div className="modal-container" onClick={(e) => e.stopPropagation()}>
-                <div className="modal-header">
-                    <div>
-                        <span className="modal-tag">Pathology Details</span>
-                        <h2 className="modal-title">{test.title}</h2>
-                    </div>
-                    <button className="close-btn" onClick={onClose}>
-                        <X size={24} />
-                    </button>
-                </div>
+  return (
+    <div className="modal-backdrop" onClick={onClose}>
+      <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-header">
+          <h2 className="modal-title">{test.title}</h2>
+          <button className="close-btn" onClick={onClose} aria-label="Close modal">
+            <X size={24} color="#5B4B8A" />
+          </button>
+        </div>
 
-                <div className="modal-body">
-                    <h4 className="list-title">Tests Included:</h4>
-                    <ul className="test-list">
-                        {test.details.map((item, index) => (
-                            <li key={index} className="test-item">
-                                <CheckCircle2 size={18} className="check-icon" />
-                                {item}
-                            </li>
-                        ))}
-                    </ul>
-                    {test.note && (
-                        <p className="modal-note">{test.note}</p>
-                    )}
-                </div>
-
-                <div className="modal-footer">
-                    <p className="note">Reports available within 24 hours.</p>
-                </div>
+        <div className="modal-body">
+          <h3 className="tests-heading">Tests Included</h3>
+          <ul className="tests-list">
+            {test.details && test.details.map((detail, idx) => (
+              <li key={idx} className="test-item">
+                {detail}
+              </li>
+            ))}
+          </ul>
+          
+          {test.note && (
+            <div className="modal-note">
+              <p className="note-text">{test.note}</p>
             </div>
+          )}
+        </div>
 
-            <style>{`
+        <div className="modal-footer">
+          <p className="footer-text">Reports available within 24 hours</p>
+        </div>
+      </div>
+
+      <style>{`
         .modal-backdrop {
           position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.5);
+          inset: 0;
+          background: rgba(0, 0, 0, 0.6);
           display: flex;
-          align-items: center;
+          align-items: flex-end;
           justify-content: center;
           z-index: 1000;
           padding: 20px;
-          backdrop-filter: blur(4px);
-          animation: fadeIn 0.3s ease;
+          backdrop-filter: blur(2px);
+          animation: fadeIn 0.2s ease;
         }
+
+        @media (min-width: 768px) {
+          .modal-backdrop {
+            align-items: center;
+          }
+        }
+
         .modal-container {
           background: white;
           width: 100%;
           max-width: 500px;
-          border-radius: 16px;
-          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+          border-radius: 20px 20px 0 0;
+          box-shadow: 0 20px 60px rgba(91, 75, 138, 0.2);
           overflow: hidden;
-          animation: slideUp 0.3s ease;
+          max-height: 90vh;
+          overflow-y: auto;
+          animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
+        @media (min-width: 768px) {
+          .modal-container {
+            border-radius: 20px;
+            max-height: 80vh;
+          }
+        }
+
         .modal-header {
-          padding: 1.5rem 2rem;
-          border-bottom: 1px solid #edf2f7;
+          padding: 2rem;
+          border-bottom: 1px solid #f0f0f0;
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
+          gap: 1rem;
           background: #fafbfc;
         }
-        .modal-tag {
-          font-size: 0.75rem;
-          text-transform: uppercase;
-          color: var(--primary);
-          font-weight: 700;
-          letter-spacing: 0.05em;
-        }
+
         .modal-title {
-          font-size: 1.5rem;
-          color: var(--text-main);
+          font-size: 1.75rem;
+          font-weight: 700;
+          color: #1f1f1f;
+          margin: 0;
+          letter-spacing: -0.3px;
+          flex: 1;
+        }
+
+        .close-btn {
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          padding: 0.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 8px;
+          transition: all 0.2s ease;
+          flex-shrink: 0;
           margin-top: 0.25rem;
         }
-        .close-btn {
-          background: none;
-          border: none;
-          color: var(--text-light);
-          padding: 0.5rem;
-          border-radius: 50%;
-          transition: all 0.2s;
-        }
+
         .close-btn:hover {
-          background: #edf2f7;
-          color: var(--text-main);
+          background: rgba(91, 75, 138, 0.1);
         }
+
+        .close-btn:active {
+          background: rgba(91, 75, 138, 0.15);
+        }
+
         .modal-body {
           padding: 2rem;
         }
-        .modal-note {
-          color: var(--text-light);
-          font-size: 0.85rem;
-          font-style: italic;
-          margin-top: 1rem;
-          padding-top: 1rem;
-          border-top: 1px solid #edf2f7;
-        }
-        .list-title {
-          color: var(--primary-dark);
-          margin-bottom: 1rem;
+
+        .tests-heading {
           font-size: 1.1rem;
+          font-weight: 600;
+          color: #5B4B8A;
+          margin: 0 0 1.25rem 0;
+          text-transform: uppercase;
+          letter-spacing: 0.4px;
         }
-        .test-list {
+
+        .tests-list {
           list-style: none;
-          display: grid;
-          gap: 0.75rem;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 0.875rem;
         }
+
         .test-item {
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           gap: 0.75rem;
-          color: var(--text-main);
+          color: #404040;
+          font-size: 1rem;
+          line-height: 1.5;
+          padding: 0.5rem 0;
+        }
+
+        .test-item::before {
+          content: "•";
+          color: #F5A623;
+          font-weight: 700;
+          font-size: 1.25rem;
+          flex-shrink: 0;
+          margin-top: -0.25rem;
+        }
+
+        .modal-note {
+          margin-top: 1.5rem;
+          padding-top: 1.5rem;
+          border-top: 1px solid #f0f0f0;
+        }
+
+        .note-text {
+          margin: 0;
           font-size: 0.95rem;
+          color: #666;
+          font-style: italic;
+          line-height: 1.5;
         }
-        .check-icon {
-          color: var(--primary);
-        }
+
         .modal-footer {
-          padding: 1rem 2rem;
+          padding: 1.25rem 2rem;
           background: #f8fafc;
-          border-top: 1px solid #edf2f7;
+          border-top: 1px solid #f0f0f0;
           text-align: center;
         }
-        .note {
-          font-size: 0.85rem;
-          color: var(--text-light);
+
+        .footer-text {
+          margin: 0;
+          font-size: 0.9rem;
+          color: #888;
           font-style: italic;
         }
+
         @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
+          from { 
+            opacity: 0;
+          }
+          to { 
+            opacity: 1;
+          }
         }
+
         @keyframes slideUp {
-          from { transform: translateY(20px); opacity: 0; }
-          to { transform: translateY(0); opacity: 1; }
+          from { 
+            transform: translateY(100%);
+            opacity: 0;
+          }
+          to { 
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+
+        @media (min-width: 768px) {
+          @keyframes slideUp {
+            from { 
+              transform: translateY(20px) scale(0.95);
+              opacity: 0;
+            }
+            to { 
+              transform: translateY(0) scale(1);
+              opacity: 1;
+            }
+          }
+        }
+
+        /* Scrollbar styling */
+        .modal-container::-webkit-scrollbar {
+          width: 6px;
+        }
+
+        .modal-container::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        .modal-container::-webkit-scrollbar-thumb {
+          background: rgba(91, 75, 138, 0.2);
+          border-radius: 3px;
+        }
+
+        .modal-container::-webkit-scrollbar-thumb:hover {
+          background: rgba(91, 75, 138, 0.3);
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Modal;

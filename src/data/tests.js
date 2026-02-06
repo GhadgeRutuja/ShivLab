@@ -1,9 +1,13 @@
+/**
+ * Blood & Urine Test Categories
+ * Central data structure for all diagnostic tests
+ * Only blood tests and urine tests - no imaging, ECG, or other procedures
+ */
+
 export const bloodTests = [
   {
     id: 'fever',
     title: 'FEVER',
-    description: 'Blood tests for fever diagnosis',
-    icon: '🌡️',
     details: [
       'Complete Blood Count (CBC)',
       'ESR',
@@ -16,8 +20,6 @@ export const bloodTests = [
   {
     id: 'diabetes',
     title: 'DIABETES',
-    description: 'Blood & urine glucose monitoring',
-    icon: '🩸',
     details: [
       'Fasting Blood Sugar',
       'Post Prandial Blood Sugar',
@@ -29,8 +31,6 @@ export const bloodTests = [
   {
     id: 'kidneys',
     title: 'KIDNEYS',
-    description: 'Kidney function assessment',
-    icon: '💧',
     details: [
       'Blood Urea',
       'Serum Creatinine',
@@ -42,8 +42,6 @@ export const bloodTests = [
   {
     id: 'liver',
     title: 'LIVER',
-    description: 'Liver enzyme & function tests',
-    icon: '🫀',
     details: [
       'SGOT (AST)',
       'SGPT (ALT)',
@@ -55,8 +53,6 @@ export const bloodTests = [
   {
     id: 'thyroid',
     title: 'THYROID',
-    description: 'Thyroid hormone levels',
-    icon: '⚡',
     details: [
       'T3',
       'T4',
@@ -66,8 +62,6 @@ export const bloodTests = [
   {
     id: 'heart',
     title: 'HEART CHECK',
-    description: 'Cardiac markers (no ECG)',
-    icon: '❤️',
     details: [
       'Lipid Profile',
       'CPK-MB',
@@ -76,10 +70,8 @@ export const bloodTests = [
     ]
   },
   {
-    id: 'vitamins',
+    id: 'vitamin',
     title: 'VITAMIN PROFILE',
-    description: 'Essential vitamin levels',
-    icon: '💊',
     details: [
       'Vitamin D',
       'Vitamin B12',
@@ -89,8 +81,6 @@ export const bloodTests = [
   {
     id: 'allergy',
     title: 'ALLERGY',
-    description: 'Allergy markers in blood',
-    icon: '🤧',
     details: [
       'Absolute Eosinophil Count',
       'Total IgE',
@@ -100,8 +90,6 @@ export const bloodTests = [
   {
     id: 'infertility',
     title: 'INFERTILITY',
-    description: 'Reproductive hormone panel',
-    icon: '🧬',
     details: [
       'LH',
       'FSH',
@@ -113,8 +101,6 @@ export const bloodTests = [
   {
     id: 'cancer',
     title: 'CANCER SCREENING',
-    description: 'Screening markers only',
-    icon: '🔬',
     details: [
       'PSA',
       'CA-125',
@@ -129,8 +115,6 @@ export const urineTests = [
   {
     id: 'u-routine',
     title: 'ROUTINE EXAMINATION',
-    description: 'Complete urine analysis',
-    icon: '🧪',
     details: [
       'Color & Appearance',
       'pH Level',
@@ -143,8 +127,6 @@ export const urineTests = [
   {
     id: 'u-micro',
     title: 'MICROSCOPY',
-    description: 'Cellular analysis',
-    icon: '🔬',
     details: [
       'Pus Cells',
       'Red Blood Cells',
@@ -157,8 +139,6 @@ export const urineTests = [
   {
     id: 'u-sugar',
     title: 'SUGAR & KETONES',
-    description: 'Diabetes indicators',
-    icon: '🍬',
     details: [
       'Urine Glucose (Qualitative)',
       'Urine Ketone Bodies',
@@ -166,20 +146,8 @@ export const urineTests = [
     ]
   },
   {
-    id: 'u-preg',
-    title: 'PREGNANCY TEST',
-    description: 'HCG detection',
-    icon: '🤰',
-    details: [
-      'Urine Beta HCG (UPT)',
-      'Confirmation Strip Test'
-    ]
-  },
-  {
     id: 'u-culture',
     title: 'CULTURE & SENSITIVITY',
-    description: 'UTI detection',
-    icon: '🦠',
     details: [
       'Bacterial Culture',
       'Antibiotic Sensitivity',
@@ -189,8 +157,6 @@ export const urineTests = [
   {
     id: 'u-protein',
     title: 'PROTEIN ANALYSIS',
-    description: 'Kidney function marker',
-    icon: '💧',
     details: [
       'Total Protein',
       'Albumin',

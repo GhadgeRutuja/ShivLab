@@ -8,7 +8,7 @@ const Hero = () => {
                 <div className="hero-text-block">
                     <h1 className="hero-headline">Blood & Urine Testing, Done with Care.</h1>
                     <p className="hero-subtext">
-                        Accurate diagnostics with same-day reports.<br />
+                        Accurate diagnostics with same-day results.<br />
                         Serving the local community with consistency and care.
                     </p>
 
@@ -23,7 +23,7 @@ const Hero = () => {
                         </div>
                         <div className="mini-card">
                             <div className="mini-number">⭐</div>
-                            <div className="mini-label">Premium</div>
+                            <div className="mini-label">Premium Services</div>
                         </div>
                     </div>
 
@@ -38,7 +38,7 @@ const Hero = () => {
                     </div>
                 </div>
                 <div className="hero-image-block">
-                    <img src="/1.png" alt="Pathology lab diagnostic testing" className="hero-image" />
+                    <img src="/2.png" alt="Pathology lab diagnostic testing" className="hero-image" />
                 </div>
             </div>
 
