@@ -18,7 +18,7 @@ const Hero = () => {
                             <div className="mini-label">Patients</div>
                         </div>
                         <div className="mini-card">
-                            <div className="mini-number">25+</div>
+                            <div className="mini-number">28+</div>
                             <div className="mini-label">Years</div>
                         </div>
                         <div className="mini-card">
